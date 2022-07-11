@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Route, Link, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RestaurantsList from "./components/restaurants-list";
 import AddReview from "./components/add-review";
@@ -17,35 +17,31 @@ function App() {
   }
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/restaurants">Restaurant Reviews</a>
+      <nav className="navbar navbar-expand navbar-light bg-light">
+        <a href="/restaurants" className="navbar-brand">Restaurant Reviews</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link to={"/restaurants"} class="nav-link">
+        <div className="navbar-nav mr-auto">
+            <li className="nav-item">
+              <Link to={"/restaurants"} className="nav-link">
                 Resturants
               </Link>
             </li>
-            <li class="nav-item">
-              {user ? (
-                <a onClick={{ logout }} className="nav-link" style={{ cursor: 'pointer' }}>
+             <li className="nav-item">
+              { user ? (
+                <a href onClick={{ logout }} className="nav-link" style={{ cursor: 'pointer' }}>
                   Logout{user.name}
-                </a>) : (
-                <Link to={"/login"} class="nav-link">
+                </a>
+                ) : (
+                <Link to={"/login"} className="nav-link">
                   Login
                 </Link>
               )}
             </li>
-
-
-          </ul>
-
         </div>
 
       </nav>
-      <div class="container mt-3">
-        <Switch>
+      <div className="container mt-3">
+        <Routes>
           <Route exact path={["/", "/</Switch>restaurants"]} component={RestaurantsList} />
 
           <Route
@@ -66,7 +62,7 @@ function App() {
               <Login {...props} login={login} />
             }}
           />
-        </Switch>
+        </Routes>
       </div>
     </div>
   );
